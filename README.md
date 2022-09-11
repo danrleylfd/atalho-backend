@@ -32,6 +32,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
+## 🤔 Ajuda
+ - `git init`
+ - `git add *`
+ - `git commit -m "new commit"`
+ - `git branch -M main`
+ - `git remote add origin https://github.com/danrleylfd/atalho-backend.git`
+ - `git push -u origin main`
+
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
