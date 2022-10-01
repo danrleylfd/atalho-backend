@@ -3,6 +3,7 @@ const { authConfig } = require("../../utils/services/auth");
 
 module.exports = (req, res, next) => {
   try {
+    req.query.id = undefined;
     const authHeader = req.headers.authorization;
     if(!authHeader) return res.status(401).json({ error: "No token provided." });
 
