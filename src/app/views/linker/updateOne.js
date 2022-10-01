@@ -3,7 +3,12 @@ const Linker = require("../../models/linker");
 
 module.exports = async(req, res) => {
   try {
-    const { query: { id }, params: { oldLabel }, body: { newLabel, newLink } } = req;
+    const { id } = req.query;
+    const { oldLabel } = req.params;
+    const { newLabel, newLink } = req.body;
+    if(!oldLabel && oldLabel.length < 0) return res.status(422).json({ error: "oldLabel missing." });
+    if(!newLabel && newLabel.length < 0) return res.status(422).json({ error: "newLabel missing." });
+    if(!newLink && newLink.length < 0) return res.status(422).json({ error: "newLink missing." });
     if(await Linker.findOne({ label: newLabel })) return res.status(401).json({ error: "Label already exists." });
     const user = await User.findById(id);
     if(!user) return res.status(404).json({ error: "User not found/exist." });
@@ -15,6 +20,6 @@ module.exports = async(req, res) => {
     linker = await linker.save();
     return res.status(200).json(linker);
   } catch (e) {
-    return res.status(400).json({ error: "Failed to edit.", code: e.message });
+    return res.status(400).json({ error: "Bad Request.", code: e.message });
   }
 };

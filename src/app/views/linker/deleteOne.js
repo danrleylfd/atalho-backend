@@ -3,7 +3,9 @@ const Linker = require("../../models/linker");
 
 module.exports = async(req, res) => {
   try {
-    const { query: { id }, params: { label } } = req;
+    const { id } = req.query;
+    const { label } = req.params;
+    if(!label && label.length < 0) return res.status(422).json({ error: "label missing." });
     const user = await User.findById(id);
     if(!user) return res.status(404).json({ error: "User not found/exist." });
     let linker = await Linker.findOne({ label });
@@ -12,6 +14,6 @@ module.exports = async(req, res) => {
     await Linker.deleteOne({ label });
     return res.status(200).json({ message: "Successfully deleted." });
   } catch (e) {
-    return res.status(400).json({ error: "Failed to delete.", code: e.message });
+    return res.status(400).json({ error: "Bad Request.", code: e.message });
   }
 };
