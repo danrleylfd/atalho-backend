@@ -1,19 +1,26 @@
-const express = require('express');
-const routes = express.Router();
-const Auth = require('../views/auth');
+const { Router } = require("express");
+const routes = Router();
 
-routes.post('/signup', Auth.signUp);
+const signUp = require("../views/auth/signUp");
+const signIn = require("../views/auth/signIn");
+const forgotPassword = require("../views/auth/forgotPassword");
+const resetPassword = require("../views/auth/resetPassword");
+const getUser = require("../views/auth/getUser");
+const editAccount = require("../views/auth/editAccount");
+const deleteAccount = require("../views/auth/deleteAccount");
 
-routes.post('/signin', Auth.signIn);
+routes.post("/signup", signUp);
 
-routes.post('/forgot_password_token', Auth.forgotPasswordToken);
+routes.post("/signin", signIn);
 
-routes.post('/forgot_password_otp', Auth.forgotPasswordOTP);
+routes.post("/forgot_password", forgotPassword);
 
-routes.post('/reset_password', Auth.resetPassword);
+routes.post("/reset_password", resetPassword);
 
-routes.put('/edit_account', Auth.editAccount);
+routes.get("/:id", getUser);
 
-routes.delete('/delete_account', Auth.deleteAccount);
+routes.put("/", editAccount);
 
-module.exports = app => app.use('/auth', routes);
+routes.delete("/", deleteAccount);
+
+module.exports = app => app.use("/auth", routes);

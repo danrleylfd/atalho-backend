@@ -1,18 +1,20 @@
-const express = require('express');
-const authMiddleware = require('../middlewares/auth');
+const { Router } = require("express");
+const routes = Router();
 
-const Linker = require('../views/linker');
-
-const routes = express.Router();
+const authMiddleware = require("../middlewares/auth");
+const createOne = require("../views/linker/createOne");
+const readMany = require("../views/linker/readMany");
+const updateOne = require("../views/linker/updateOne");
+const deleteOne = require("../views/linker/deleteOne");
 
 routes.use(authMiddleware);
 
-routes.post('/', Linker.create);
+routes.post("/", createOne);
 
-routes.get('/by-user', Linker.readAllByUser);
+routes.get("/by-user", readMany);
 
-routes.put('/:oldLabel', Linker.update);
+routes.put("/:oldLabel", updateOne);
 
-routes.delete('/:label', Linker.delete);
+routes.delete("/:label", deleteOne);
 
-module.exports = app => app.use('/linkers', routes);
+module.exports = app => app.use("/linkers", routes);

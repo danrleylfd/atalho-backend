@@ -1,4 +1,4 @@
-const mongoose = require('../../database');
+const mongoose = require("../../utils/database");
 
 const LinkerSchema = new mongoose.Schema({
   label: {
@@ -12,9 +12,9 @@ const LinkerSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Linker', LinkerSchema);
+module.exports = mongoose.model("Linker", LinkerSchema);

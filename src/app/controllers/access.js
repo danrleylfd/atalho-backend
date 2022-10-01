@@ -1,9 +1,8 @@
-const express = require('express');
+const { Router } = require("express");
+const routes = Router();
 
-const Linker = require('../views/linker');
+const readOne = require("../views/linker/readOne");
 
-const routes = express.Router();
+routes.get("/:label", readOne);
 
-routes.get('/:label', Linker.read);
-
-module.exports = app => app.use('/', routes);
+module.exports = app => app.use("/", routes);
