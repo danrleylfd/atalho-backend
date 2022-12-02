@@ -40,6 +40,13 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
  - `git remote add origin https://github.com/danrleylfd/atalho-backend.git`
  - `git push -u origin main`
 
+## Env
+ - `HOST="<Frontend Host>"`
+ - `PORT=80`
+ - `MONGODB_HOST="mongodb+srv://<Username>:<Password>@cluster0-gw6np.gcp.mongodb.net/<DBName>?retryWrites=true&w=majority"`
+ - `EMAIL="username@gmail.com"`
+ - `PASSWORD="password"`
+
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

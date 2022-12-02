@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors({ origin: process.env.HOST }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

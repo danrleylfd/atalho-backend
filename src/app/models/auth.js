@@ -32,8 +32,8 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 UserSchema.pre("save", async function (next) {
-  const hashedPassword = await hash(this.password, 10);
-  this.password = hashedPassword;
+  const encriptedPassword = await hash(this.password, 10);
+  this.password = encriptedPassword;
   next();
 });
 
